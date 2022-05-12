@@ -1,9 +1,11 @@
 
 package com.miapp.springboot.Controller;
 
+import com.miapp.springboot.model.Persona;
 import java.util.ArrayList;
 import java.util.List;
-import model.Persona;
+
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,5 +1,5 @@
 
-package model;
+package com.miapp.springboot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
