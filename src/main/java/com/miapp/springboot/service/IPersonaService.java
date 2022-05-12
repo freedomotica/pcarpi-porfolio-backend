@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.miapp.springboot.service;
 
-/**
- *
- * @author freed
- */
+import com.miapp.springboot.model.Persona;
+import java.util.List;
+
+
 public interface IPersonaService {
-    
+    public List <Persona> verPersonas();
+    public void crearPersona (Persona per);
+    public void borrarPersona (Long id);
+    public Persona buscarPersona(Long id);
 }
