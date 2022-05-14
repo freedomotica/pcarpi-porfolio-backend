@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,9 +31,18 @@ public class Controller {
         persoServ.crearPersona(pers);
     }
     
-     @PutMapping ("/update/persona")
-    public void updatePersona(@RequestBody Persona pers){
-        persoServ.updatePersona(pers);
+     @PutMapping ("/update/{id}")
+    public Persona updatePersona(  @PathVariable Long id,
+                                @RequestParam ("nombre")String nuevoNombre,
+                                @RequestParam ("apellido")String nuevoApellido
+                                ){
+        Persona perso = persoServ.buscarPersona(id);
+        
+        perso.setNombre(nuevoNombre);
+        perso.setApellido(nuevoApellido);
+        
+        persoServ.crearPersona(perso);
+        return perso;
     }
     
     @GetMapping ("/ver/personas")
