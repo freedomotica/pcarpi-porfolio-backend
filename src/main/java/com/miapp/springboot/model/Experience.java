@@ -13,24 +13,24 @@ import lombok.Setter;
 public class Experience {
         @Id
         @GeneratedValue (strategy = GenerationType.AUTO)
-        Long id;
+        private Long id;
         
-        String position;
-        String company;
-        String img;
-        String mode;
-        String dateStart;
-        String dateEnd;
-        String timeElapsed;
+        private String position;
+        private String company;
+        private String logo;
+        private String mode;
+        private String dateStart;
+        private String dateEnd;
+        private String timeElapsed;
 
     public Experience() {
     }
 
-    public Experience(Long id, String position, String company, String img, String mode, String dateStart, String dateEnd, String timeElapsed) {
+    public Experience(Long id, String position, String company, String logo, String mode, String dateStart, String dateEnd, String timeElapsed) {
         this.id = id;
         this.position = position;
         this.company = company;
-        this.img = img;
+        this.logo = logo;
         this.mode = mode;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
