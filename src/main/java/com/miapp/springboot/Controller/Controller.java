@@ -31,15 +31,16 @@ public class Controller {
         persoServ.crearPersona(pers);
     }
     
-     @PutMapping ("/update/{id}")
+     @PutMapping ("/update/persona/{id}")
     public Persona updatePersona(  @PathVariable Long id,
-                                @RequestParam ("nombre")String nuevoNombre,
-                                @RequestParam ("apellido")String nuevoApellido
-                                ){
+                                @RequestBody Persona pers){
         Persona perso = persoServ.buscarPersona(id);
         
-        perso.setNombre(nuevoNombre);
-        perso.setApellido(nuevoApellido);
+        perso.setName(pers.getName());
+        perso.setPosition(pers.getPosition());
+        perso.setBackImage(pers.getBackImage());
+        perso.setUbicacion(pers.getUbicacion());
+        perso.setAbout(pers.getAbout());
         
         persoServ.crearPersona(perso);
         return perso;
@@ -49,6 +50,10 @@ public class Controller {
     @ResponseBody
     public List<Persona> verPersonas(){
         return persoServ.verPersonas();
+    }
+    @GetMapping ("/buscar/persona/{id}")
+    public Persona BuscarPersona(@PathVariable Long id){
+        return persoServ.buscarPersona(id);
     }
     
     @DeleteMapping ("/delete/{id}")
