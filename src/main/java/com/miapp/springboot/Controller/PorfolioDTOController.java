@@ -3,9 +3,15 @@ package com.miapp.springboot.Controller;
 
 import com.miapp.springboot.DTO.PorfolioDTO;
 import com.miapp.springboot.model.Educacion;
+import com.miapp.springboot.model.Experience;
 import com.miapp.springboot.model.Persona;
+import com.miapp.springboot.model.Proyectos;
+import com.miapp.springboot.model.Skill;
 import com.miapp.springboot.service.IEducacionService;
+import com.miapp.springboot.service.IExperienceService;
 import com.miapp.springboot.service.IPersonaService;
+import com.miapp.springboot.service.IProyectosService;
+import com.miapp.springboot.service.ISkillService;
 import java.util.HashSet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +27,12 @@ public class PorfolioDTOController {
     private IEducacionService EduServ;
     @Autowired
     private IPersonaService persoServ;
+    @Autowired
+    private IExperienceService ExpServ;
+    @Autowired
+    private ISkillService SkillServ;
+     @Autowired
+    private IProyectosService ProyectosServ;
         
     @GetMapping ("/buscar/porfolio")
     @ResponseBody
@@ -28,6 +40,10 @@ public class PorfolioDTOController {
         long id = 1;
         Persona pers = persoServ.buscarPersona(id);
         List <Educacion> educ = EduServ.verEducacion();
+        List <Experience> exp = ExpServ.verExperiences();
+        List <Skill> skill = SkillServ.verSkills();
+        List <Proyectos> proy = ProyectosServ.verProyectos();
+        
         PorfolioDTO porfDTO = new PorfolioDTO();
         
         porfDTO.setId(pers.getId());
@@ -36,8 +52,10 @@ public class PorfolioDTOController {
         porfDTO.setAvatar(pers.getAvatar());
         porfDTO.setBackImage(pers.getBackImage());
         porfDTO.setEducacion(educ);
-        
-        
+        porfDTO.setExperience(exp);
+        porfDTO.setSkill(skill);
+        porfDTO.setProyectos(proy);
+               
         return porfDTO;
     }
     

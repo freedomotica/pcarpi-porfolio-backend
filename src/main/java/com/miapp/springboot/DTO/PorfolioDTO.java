@@ -16,11 +16,14 @@ public class PorfolioDTO implements Serializable {
     private String about;
     private String avatar;
     private List educacion;
+    private List Experience;
+    private List Skill;
+    private List Proyectos;
 
     public PorfolioDTO() {
     }
 
-    public PorfolioDTO(Long id, String name, String backImage, String position, String ubicacion, String about, String avatar, List educacion) {
+    public PorfolioDTO(Long id, String name, String backImage, String position, String ubicacion, String about, String avatar, List educacion, List Experience, List Skill, List Proyectos) {
         this.id = id;
         this.name = name;
         this.backImage = backImage;
@@ -29,7 +32,12 @@ public class PorfolioDTO implements Serializable {
         this.about = about;
         this.avatar = avatar;
         this.educacion = educacion;
+        this.Experience = Experience;
+        this.Skill = Skill;
+        this.Proyectos = Proyectos;
     }
+
+    
     
     
     

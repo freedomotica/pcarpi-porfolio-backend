@@ -1,0 +1,46 @@
+
+package com.miapp.springboot.Controller;
+
+import com.miapp.springboot.model.Experience;
+import com.miapp.springboot.service.IExperienceService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class ExperienceController {
+    
+
+     //Inyeccion de servicios
+    @Autowired
+    private IExperienceService ExpServ;
+    
+    // End point experience
+    @PostMapping ("/new/experience")
+    public void agregarExperience(@RequestBody Experience exp){
+        ExpServ.crearExperience(exp);
+    }
+     
+    @GetMapping ("/ver/experience")
+    @ResponseBody
+    public List<Experience> verExperiences(){
+        return ExpServ.verExperiences();
+    }
+    @GetMapping ("/buscar/experience/{id}")
+    @ResponseBody
+    public Experience BuscarExperience(@PathVariable Long id){
+        return ExpServ.buscarExperience(id);
+    }
+    
+    @DeleteMapping ("/delete/experience/{id}")
+    public void borrarExperience (@PathVariable Long id){
+        ExpServ.borrarExperience(id);
+    }
+}
