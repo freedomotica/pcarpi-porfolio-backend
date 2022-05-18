@@ -24,23 +24,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class PersonaController {
     
-    @Autowired
-    private IEducacionService EduServ;
+    //Inyeccion de servicios
+   
     @Autowired
     private IPersonaService persoServ;
     
-    
+    // End ponts
      
     @PostMapping ("/new/persona")
     public void agregarPersona(@RequestBody Persona pers){
         persoServ.crearPersona(pers);
     }
-     @PostMapping ("/new/educacion")
-    public void agregarEducacion(@RequestBody Educacion edu){
-        EduServ.crearEducacion(edu);
-    }
+
     
      @PutMapping ("/update/persona/{id}")
     public Persona updatePersona(  @PathVariable Long id,
@@ -63,19 +60,17 @@ public class Controller {
     public List<Persona> verPersonas(){
         return persoServ.verPersonas();
     }
-    @GetMapping ("/ver/educacion")
-    @ResponseBody
-    public List<Educacion> verEducacion(){
-        return EduServ.verEducacion();
-    }
+
     //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping ("/buscar/persona/{id}")
     public Persona BuscarPersona(@PathVariable Long id){
         return persoServ.buscarPersona(id);
     }
     
-    @DeleteMapping ("/delete/{id}")
+    @DeleteMapping ("/delete/persona/{id}")
     public void borrarPersona (@PathVariable Long id){
         persoServ.borrarPersona(id);
     }
+    
+    
 }
