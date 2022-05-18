@@ -1,7 +1,9 @@
 
 package com.miapp.springboot.Controller;
 
+import com.miapp.springboot.model.Educacion;
 import com.miapp.springboot.model.Persona;
+import com.miapp.springboot.service.IEducacionService;
 import com.miapp.springboot.service.IPersonaService;
 
 import java.util.List;
@@ -25,11 +27,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     
     @Autowired
+    private IEducacionService EduServ;
+    @Autowired
     private IPersonaService persoServ;
+    
+    
      
     @PostMapping ("/new/persona")
     public void agregarPersona(@RequestBody Persona pers){
         persoServ.crearPersona(pers);
+    }
+     @PostMapping ("/new/educacion")
+    public void agregarEducacion(@RequestBody Educacion edu){
+        EduServ.crearEducacion(edu);
     }
     
      @PutMapping ("/update/persona/{id}")
@@ -52,6 +62,11 @@ public class Controller {
     @ResponseBody
     public List<Persona> verPersonas(){
         return persoServ.verPersonas();
+    }
+    @GetMapping ("/ver/educacion")
+    @ResponseBody
+    public List<Educacion> verEducacion(){
+        return EduServ.verEducacion();
     }
     //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping ("/buscar/persona/{id}")
