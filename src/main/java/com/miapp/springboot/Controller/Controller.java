@@ -6,6 +6,7 @@ import com.miapp.springboot.service.IPersonaService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 
@@ -41,6 +42,7 @@ public class Controller {
         perso.setBackImage(pers.getBackImage());
         perso.setUbicacion(pers.getUbicacion());
         perso.setAbout(pers.getAbout());
+        perso.setAbout(pers.getAvatar());
         
         persoServ.crearPersona(perso);
         return perso;
@@ -51,6 +53,7 @@ public class Controller {
     public List<Persona> verPersonas(){
         return persoServ.verPersonas();
     }
+    //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping ("/buscar/persona/{id}")
     public Persona BuscarPersona(@PathVariable Long id){
         return persoServ.buscarPersona(id);

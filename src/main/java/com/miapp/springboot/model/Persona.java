@@ -21,18 +21,22 @@ public class Persona {
     private String position;
     private String ubicacion;
     private String about;
+    private String avatar;
 
     public Persona() {
     }
 
-    public Persona(Long id, String name, String backImage, String position, String ubicacion, String about) {
+    public Persona(Long id, String name, String backImage, String position, String ubicacion, String about, String avatar) {
         this.id = id;
         this.name = name;
         this.backImage = backImage;
         this.position = position;
         this.ubicacion = ubicacion;
         this.about = about;
+        this.avatar = avatar;
     }
+
+   
 
     
  
