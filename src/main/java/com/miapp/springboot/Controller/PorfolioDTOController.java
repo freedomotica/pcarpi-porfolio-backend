@@ -48,9 +48,12 @@ public class PorfolioDTOController {
         
         porfDTO.setId(pers.getId());
         porfDTO.setName(pers.getName());
+        porfDTO.setPosition(pers.getPosition());
+        porfDTO.setUbicacion(pers.getUbicacion());
         porfDTO.setAbout(pers.getAbout());
         porfDTO.setAvatar(pers.getAvatar());
         porfDTO.setBackImage(pers.getBackImage());
+        porfDTO.setBudge(pers.getBudge());
         porfDTO.setEducacion(educ);
         porfDTO.setExperience(exp);
         porfDTO.setSkill(skill);

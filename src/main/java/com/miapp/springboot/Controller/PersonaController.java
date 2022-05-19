@@ -49,7 +49,8 @@ public class PersonaController {
         perso.setBackImage(pers.getBackImage());
         perso.setUbicacion(pers.getUbicacion());
         perso.setAbout(pers.getAbout());
-        perso.setAbout(pers.getAvatar());
+        perso.setAvatar(pers.getAvatar());
+        perso.setBudge(perso.getBudge());
         
         persoServ.crearPersona(perso);
         return perso;

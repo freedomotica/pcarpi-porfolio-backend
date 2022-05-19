@@ -22,11 +22,12 @@ public class Persona {
     private String ubicacion;
     private String about;
     private String avatar;
+    private String budge;
 
     public Persona() {
     }
 
-    public Persona(Long id, String name, String backImage, String position, String ubicacion, String about, String avatar) {
+    public Persona(Long id, String name, String backImage, String position, String ubicacion, String about, String avatar, String budge) {
         this.id = id;
         this.name = name;
         this.backImage = backImage;
@@ -34,7 +35,10 @@ public class Persona {
         this.ubicacion = ubicacion;
         this.about = about;
         this.avatar = avatar;
+        this.budge = budge;
     }
+
+ 
 
    
 

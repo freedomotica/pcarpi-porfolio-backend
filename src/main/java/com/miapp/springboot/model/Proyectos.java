@@ -23,17 +23,21 @@ public class Proyectos {
     private String timeElapsed;
     private String link;
     private String img;
+    private String budge;
     
     public Proyectos() {
     }
 
-    public Proyectos(Long id, String name, String description, String timeElapsed, String link, String img) {
+    public Proyectos(Long id, String name, String description, String timeElapsed, String link, String img, String budge) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.timeElapsed = timeElapsed;
         this.link = link;
         this.img = img;
+        this.budge = budge;
     }
+
+  
     
 }
