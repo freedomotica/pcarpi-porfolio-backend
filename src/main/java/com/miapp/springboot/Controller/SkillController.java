@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,5 +42,18 @@ public class SkillController {
     @DeleteMapping ("/delete/skill/{id}")
     public void borrarSkill (@PathVariable Long id){
         SkillServ.borrarSkill(id);
+    }
+      @PutMapping ("/update/skill/{id}")
+    public Skill updatePersona(  @PathVariable Long id,
+                                @RequestBody Skill skl){
+        Skill sklls = SkillServ.buscarSkill(id);
+        
+        sklls.setName(skl.getName());
+        sklls.setProgress(skl.getProgress());
+        sklls.setType(skl.getType());
+        
+                
+        SkillServ.crearSkill(sklls);
+        return sklls;
     }
 }

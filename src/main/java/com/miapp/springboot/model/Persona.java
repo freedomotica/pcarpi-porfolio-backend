@@ -38,12 +38,5 @@ public class Persona {
         this.budge = budge;
     }
 
- 
-
-   
-
-    
- 
-   
-    
+     
 }
