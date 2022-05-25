@@ -3,6 +3,8 @@ package com.miapp.springboot.Controller;
 
 import com.miapp.springboot.model.Usuario;
 import com.miapp.springboot.service.IUsuarioService;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,8 +26,24 @@ public class UsuarioController {
     
     // End point Usuario
     @PostMapping ("/new/usuario")
-    public void agregarUsuario(@RequestBody Usuario us){
+    public String agregarUsuario(@RequestBody Usuario us){
+        //si el usuario ya existe
+        String usu = us.getUser();
+        try{
+        Usuario userDataBase = UsuarioServ.buscaUsuarioByUser(us.getUser());
+         if(userDataBase.getUser().equals(usu)){
+            return "Usuario ya registrado";
+        }
+        }
+        catch(Exception e){}
+       
+        //encriptacion del password
+                
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
+        String hash = argon2.hash(1, 1024, 1, us.getPassword());
+        us.setPassword(hash);
         UsuarioServ.crearUsuario(us);
+        return "OK";
     }
      
     @GetMapping ("/ver/usuario")

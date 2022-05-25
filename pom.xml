@@ -59,7 +59,11 @@
                 <version>2.5.3</version>
                 <type>module</type>
              </dependency>
-
+            <dependency>
+                <groupId>de.mkammerer</groupId>
+                <artifactId>argon2-jvm</artifactId>
+                <version>2.5</version>
+            </dependency>
              <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>

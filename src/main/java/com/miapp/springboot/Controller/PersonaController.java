@@ -30,7 +30,7 @@ public class PersonaController {
    
     @Autowired
     private IPersonaService persoServ;
-    
+            
     // End ponts
      
     @PostMapping ("/new/persona")
