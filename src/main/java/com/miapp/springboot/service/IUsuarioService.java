@@ -3,6 +3,7 @@ package com.miapp.springboot.service;
 
 import com.miapp.springboot.model.Usuario;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface IUsuarioService {
@@ -11,5 +12,5 @@ public interface IUsuarioService {
     public void updateUsuario (Usuario us);
     public void borrarUsuario (Long id);
     public Usuario buscarUsuario(Long id);
-    public Usuario buscaUsuarioByUser(String us);
+    public Optional<Usuario> buscaUsuarioByUser(String us);
 }

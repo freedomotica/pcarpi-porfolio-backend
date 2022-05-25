@@ -3,9 +3,9 @@ package com.miapp.springboot.Controller;
 
 import com.miapp.springboot.model.Usuario;
 import com.miapp.springboot.service.IUsuarioService;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
+import com.miapp.springboot.utils.Encriptado;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,25 +23,24 @@ public class UsuarioController {
      //Inyeccion de servicios
     @Autowired
     private IUsuarioService UsuarioServ;
+    @Autowired
+    private Encriptado Encrip;
+    
     
     // End point Usuario
     @PostMapping ("/new/usuario")
     public String agregarUsuario(@RequestBody Usuario us){
         //si el usuario ya existe
-        String usu = us.getUser();
-        try{
-        Usuario userDataBase = UsuarioServ.buscaUsuarioByUser(us.getUser());
-         if(userDataBase.getUser().equals(usu)){
+        
+        Optional<Usuario> userDataBase = UsuarioServ.buscaUsuarioByUser(us.getUser());
+         if(userDataBase.isPresent()){
             return "Usuario ya registrado";
-        }
-        }
-        catch(Exception e){}
-       
+         }       
         //encriptacion del password
-                
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i);
-        String hash = argon2.hash(1, 1024, 1, us.getPassword());
-        us.setPassword(hash);
+        
+        String passEncriptada;
+        passEncriptada = Encrip.hash(us.getPassword());
+        us.setPassword(passEncriptada);
         UsuarioServ.crearUsuario(us);
         return "OK";
     }

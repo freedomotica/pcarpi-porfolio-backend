@@ -6,10 +6,13 @@
 package com.miapp.springboot.repository;
 
 import com.miapp.springboot.model.Usuario;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    Usuario findByUser (String user);
+    Optional <Usuario> findByUser (String user);
 }

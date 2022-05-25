@@ -4,6 +4,7 @@ package com.miapp.springboot.service;
 import com.miapp.springboot.model.Usuario;
 import com.miapp.springboot.repository.UsuarioRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +38,9 @@ public class UsuarioService implements IUsuarioService {
 
     
     @Override
-    public Usuario buscaUsuarioByUser(String user) {
+    public Optional<Usuario> buscaUsuarioByUser(String user) {
         return UsuarioRepo.findByUser(user);
+             
     }
     
 }
