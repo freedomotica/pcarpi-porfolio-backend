@@ -85,7 +85,9 @@ public class UsuarioController {
         if(!jwtUtil.validity(token)){return new Usuario();}
         Usuario usu = UsuarioServ.buscarUsuario(id);
         
-        usu.setPassword(us.getPassword());
+        String passEncriptada;
+        passEncriptada = Encrip.hash(us.getPassword());
+        usu.setPassword(passEncriptada);
         usu.setUser(us.getUser());
                         
         UsuarioServ.crearUsuario(usu);

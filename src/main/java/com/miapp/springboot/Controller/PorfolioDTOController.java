@@ -35,8 +35,7 @@ public class PorfolioDTOController {
     private ISkillService SkillServ;
      @Autowired
     private IProyectosService ProyectosServ;
-      @Autowired
-    private JWTUtil jwtUtil;
+    
         
     @GetMapping ("/buscar/porfolio")
     @ResponseBody
