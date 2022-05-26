@@ -2,6 +2,7 @@
 package com.miapp.springboot.Controller;
 
 import com.miapp.springboot.DTO.PorfolioDTO;
+import com.miapp.springboot.JWT.JWTUtil;
 import com.miapp.springboot.model.Educacion;
 import com.miapp.springboot.model.Experience;
 import com.miapp.springboot.model.Persona;
@@ -16,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,10 +35,13 @@ public class PorfolioDTOController {
     private ISkillService SkillServ;
      @Autowired
     private IProyectosService ProyectosServ;
+      @Autowired
+    private JWTUtil jwtUtil;
         
     @GetMapping ("/buscar/porfolio")
     @ResponseBody
     public PorfolioDTO buscarPorfolio(){
+                
         long id = 1;
         Persona pers = persoServ.buscarPersona(id);
         List <Educacion> educ = EduServ.verEducacion();
