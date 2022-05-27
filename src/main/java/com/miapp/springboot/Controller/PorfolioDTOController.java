@@ -35,12 +35,15 @@ public class PorfolioDTOController {
     private ISkillService SkillServ;
      @Autowired
     private IProyectosService ProyectosServ;
-    
+     @Autowired
+    private JWTUtil jwtUtil;
         
     @GetMapping ("/buscar/porfolio")
     @ResponseBody
-    public PorfolioDTO buscarPorfolio(){
-                
+    public PorfolioDTO buscarPorfolio(@RequestHeader(value="Authorization")String token){
+        //si token valido
+        if(!jwtUtil.validity(token)){return new PorfolioDTO();}
+        
         long id = 1;
         Persona pers = persoServ.buscarPersona(id);
         List <Educacion> educ = EduServ.verEducacion();
