@@ -40,9 +40,9 @@ public class PorfolioDTOController {
         
     @GetMapping ("/buscar/porfolio")
     @ResponseBody
-    public PorfolioDTO buscarPorfolio(@RequestHeader(value="Authorization")String token){
+    public PorfolioDTO buscarPorfolio(){
         //si token valido
-        if(!jwtUtil.validity(token)){return new PorfolioDTO();}
+        //if(!jwtUtil.validity(token)){return new PorfolioDTO();}
         
         long id = 1;
         Persona pers = persoServ.buscarPersona(id);
