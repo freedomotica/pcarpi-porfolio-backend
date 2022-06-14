@@ -1,17 +1,13 @@
 
 package com.miapp.springboot.Controller;
 
-import com.miapp.springboot.model.Educacion;
-import com.miapp.springboot.model.Persona;
-import com.miapp.springboot.service.IEducacionService;
-import com.miapp.springboot.service.IPersonaService;
 
+import com.miapp.springboot.model.Persona;
+import com.miapp.springboot.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +34,7 @@ public class PersonaController {
         persoServ.crearPersona(pers);
     }
 
-    
+    @CrossOrigin(origins = "*")
      @PutMapping ("/update/persona/{id}")
     public Persona updatePersona(  @PathVariable Long id,
                                 @RequestBody Persona pers){
@@ -50,7 +46,7 @@ public class PersonaController {
         perso.setUbicacion(pers.getUbicacion());
         perso.setAbout(pers.getAbout());
         perso.setAvatar(pers.getAvatar());
-        perso.setBudge(perso.getBudge());
+        perso.setBudge(pers.getBudge());
         
         persoServ.crearPersona(perso);
         return perso;
