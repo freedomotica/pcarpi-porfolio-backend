@@ -33,14 +33,14 @@ public class AvatarController {
      @CrossOrigin(origins = "*")
     @PostMapping ("/new/avatar")
     public void agregarAvatar(
-                              @RequestParam("imagen") MultipartFile imagen,
-                              @RequestParam("id_persona") Long id_persona
+                              @RequestParam("imagen") MultipartFile imagen
+                              
     
     ) throws IOException{
         Avatar avat = new Avatar();
         avat.setName(imagen.getOriginalFilename());
         avat.setImagen(imagen.getBytes());
-        avat.setIdPersona(id_persona);
+        
         
         avatarServ.crearAvatar(avat);
     }
@@ -49,14 +49,14 @@ public class AvatarController {
      @PutMapping ("/update/avatar/{id}")
     public Avatar updateAvatar(  @PathVariable Long id,
                                 
-                              @RequestParam("imagen") MultipartFile imagen,
-                              @RequestParam("id_persona") Long id_persona
+                              @RequestParam("imagen") MultipartFile imagen
+                              
     ) throws IOException{
         Avatar avatar = avatarServ.buscarAvatar(id);
         
         avatar.setName(imagen.getOriginalFilename());
         avatar.setImagen(imagen.getBytes());
-        avatar.setIdPersona(id_persona);
+        
       
         
         avatarServ.crearAvatar(avatar);

@@ -2,6 +2,7 @@
 package com.miapp.springboot.Controller;
 
 
+import com.miapp.springboot.model.Avatar;
 import com.miapp.springboot.model.Persona;
 import com.miapp.springboot.service.IPersonaService;
 import java.util.List;
@@ -31,6 +32,7 @@ public class PersonaController {
      
     @PostMapping ("/new/persona")
     public void agregarPersona(@RequestBody Persona pers){
+        pers.setAvatar(new Avatar());
         persoServ.crearPersona(pers);
     }
 

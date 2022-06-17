@@ -1,6 +1,7 @@
 
 package com.miapp.springboot.DTO;
 
+import com.miapp.springboot.model.Avatar;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Getter;
@@ -14,7 +15,7 @@ public class PorfolioDTO implements Serializable {
     private String position;
     private String ubicacion;
     private String about;
-    private String avatar;
+    private Avatar avatar;
     private String budge;
     private List educacion;
     private List Experience;
@@ -24,7 +25,7 @@ public class PorfolioDTO implements Serializable {
     public PorfolioDTO() {
     }
 
-    public PorfolioDTO(Long id, String name, String backImage, String position, String ubicacion, String about, String avatar, String budge, List educacion, List Experience, List Skill, List Proyectos) {
+    public PorfolioDTO(Long id, String name, String backImage, String position, String ubicacion, String about, Avatar avatar, String budge, List educacion, List Experience, List Skill, List Proyectos) {
         this.id = id;
         this.name = name;
         this.backImage = backImage;
