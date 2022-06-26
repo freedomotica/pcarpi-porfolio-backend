@@ -16,6 +16,7 @@ import com.miapp.springboot.service.ISkillService;
 import java.util.HashSet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,7 +38,8 @@ public class PorfolioDTOController {
     private IProyectosService ProyectosServ;
      @Autowired
     private JWTUtil jwtUtil;
-        
+    
+    @CrossOrigin(origins = "*")
     @GetMapping ("/buscar/porfolio")
     @ResponseBody
     public PorfolioDTO buscarPorfolio(){
@@ -61,11 +63,15 @@ public class PorfolioDTOController {
         porfDTO.setAvatar(pers.getAvatar());
         porfDTO.setBackImage(pers.getBackImage());
         porfDTO.setBudge(pers.getBudge());
+        porfDTO.setWhatsapp(pers.getWhatsapp());
+        porfDTO.setFacebook(pers.getFacebook());
+        porfDTO.setLinkedin(pers.getLinkedin());
+        
         porfDTO.setEducacion(educ);
         porfDTO.setExperience(exp);
         porfDTO.setSkill(skill);
         porfDTO.setProyectos(proy);
-               
+        
         return porfDTO;
     }
     
