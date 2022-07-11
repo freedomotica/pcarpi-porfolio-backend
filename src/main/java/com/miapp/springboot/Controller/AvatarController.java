@@ -49,7 +49,7 @@ public class AvatarController {
      @PutMapping ("/update/avatar/{id}")
     public Avatar updateAvatar(  @PathVariable Long id,
                                 
-                              @RequestParam("imagen") MultipartFile imagen
+                              @RequestBody MultipartFile imagen
                               
     ) throws IOException{
         Avatar avatar = avatarServ.buscarAvatar(id);
