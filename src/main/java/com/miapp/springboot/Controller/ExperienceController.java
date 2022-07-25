@@ -3,6 +3,7 @@ package com.miapp.springboot.Controller;
 
 import com.miapp.springboot.model.Experience;
 import com.miapp.springboot.service.IExperienceService;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -50,20 +53,31 @@ public class ExperienceController {
     }
      @CrossOrigin(origins = "*")
          @PutMapping ("/update/experience/{id}")
-    public Experience updatePersona(  @PathVariable Long id,
-                                @RequestBody Experience expe){
+    public Experience updateExperience(  @PathVariable Long id,
+                                @RequestParam
+                                    String position,
+                                    String company,
+                                    String mode,
+                                    String timeElapsed,
+                                    String dateStart,
+                                    String dateEnd,
+                                    MultipartFile imagen
+            
+                                    
+                                ) throws IOException{
         Experience exp = ExpServ.buscarExperience(id);
-        
-        exp.setPosition(expe.getPosition());
-        exp.setCompany(expe.getCompany());
-        exp.setLogo(expe.getLogo());
-        exp.setMode(expe.getMode());
-        exp.setDateStart(expe.getDateStart());
-        exp.setDateEnd(expe.getDateEnd());
-        exp.setTimeElapsed(expe.getTimeElapsed());
-              
+                
+        exp.setPosition(position);
+        exp.setCompany(company);
+        exp.setMode(mode);
+        exp.setDateStart(dateStart);
+        exp.setDateEnd(dateEnd);
+        exp.setTimeElapsed(timeElapsed);
+        exp.setNameImagen(imagen.getOriginalFilename());
+        exp.setImagen(imagen.getBytes());      
         
         ExpServ.crearExperience(exp);
         return exp;
     }
+         
 }

@@ -17,24 +17,28 @@ public class Experience {
         
         private String position;
         private String company;
-        private String logo;
         private String mode;
         private String dateStart;
         private String dateEnd;
         private String timeElapsed;
+        private String nameImagen;
+        private byte [] imagen;
 
     public Experience() {
     }
 
-    public Experience(Long id, String position, String company, String logo, String mode, String dateStart, String dateEnd, String timeElapsed) {
+    public Experience(Long id, String position, String company, String mode, String dateStart, String dateEnd, String timeElapsed, String nameImagen, byte[] imagen) {
         this.id = id;
         this.position = position;
         this.company = company;
-        this.logo = logo;
         this.mode = mode;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.timeElapsed = timeElapsed;
+        this.nameImagen = nameImagen;
+        this.imagen = imagen;
     }
+
+    
     
 }
