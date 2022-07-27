@@ -30,8 +30,8 @@ public class ExperienceController {
     // End point experience
      @CrossOrigin(origins = "*")
     @PostMapping ("/new/experience")
-    public void agregarExperience(@RequestBody Experience exp){
-        ExpServ.crearExperience(exp);
+    public Experience agregarExperience(@RequestBody Experience exp){
+        return ExpServ.crearExperienceAndReturn(exp);
     }
     
      @CrossOrigin(origins = "*")
@@ -66,15 +66,25 @@ public class ExperienceController {
                                     
                                 ) throws IOException{
         Experience exp = ExpServ.buscarExperience(id);
-                
+        try{       
         exp.setPosition(position);
         exp.setCompany(company);
         exp.setMode(mode);
         exp.setDateStart(dateStart);
         exp.setDateEnd(dateEnd);
         exp.setTimeElapsed(timeElapsed);
+        
         exp.setNameImagen(imagen.getOriginalFilename());
         exp.setImagen(imagen.getBytes());      
+        }
+        catch(NullPointerException e){
+            exp.setPosition(position);
+            exp.setCompany(company);
+            exp.setMode(mode);
+            exp.setDateStart(dateStart);
+            exp.setDateEnd(dateEnd);
+            exp.setTimeElapsed(timeElapsed);
+        }
         
         ExpServ.crearExperience(exp);
         return exp;
