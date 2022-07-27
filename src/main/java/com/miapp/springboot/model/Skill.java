@@ -19,16 +19,22 @@ public class Skill {
     private String name;
     private Integer progress;
     private String type;
+    private String nameImagen;
+    private byte [] imagen;
 
     public Skill() {
     }
 
-    public Skill(Long id, String name, Integer progress, String type) {
+    public Skill(Long id, String name, Integer progress, String type, String nameImagen, byte[] imagen) {
         this.id = id;
         this.name = name;
         this.progress = progress;
         this.type = type;
+        this.nameImagen = nameImagen;
+        this.imagen = imagen;
     }
+
+  
 
    
     

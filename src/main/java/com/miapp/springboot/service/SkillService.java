@@ -22,6 +22,10 @@ public class SkillService implements ISkillService{
         SkillRepo.save(edu);
     }
     @Override
+    public Skill crearSkillAndReturn(Skill edu) {
+        return SkillRepo.save(edu);
+    }
+    @Override
        public void updateSkill(Skill per) {
            SkillRepo.save(per);
        }
