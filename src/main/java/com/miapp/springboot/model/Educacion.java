@@ -20,22 +20,26 @@ public class Educacion {
     private String career;
     private String dateStart;
     private String dateEnd;
-    private String logo;
     private Integer score;
+    private String nameImagen;
+    private byte [] imagen;
 
     public Educacion() {
     }
-    
-    
-     public Educacion(Long id, String school, String title, String career, String dateStart, String dateEnd, String logo, Integer score) {
+
+    public Educacion(Long id, String school, String title, String career, String dateStart, String dateEnd, Integer score, String nameImagen, byte[] imagen) {
         this.id = id;
         this.school = school;
         this.title = title;
         this.career = career;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.logo = logo;
         this.score = score;
+        this.nameImagen = nameImagen;
+        this.imagen = imagen;
     }
+    
+    
+     
    
 }

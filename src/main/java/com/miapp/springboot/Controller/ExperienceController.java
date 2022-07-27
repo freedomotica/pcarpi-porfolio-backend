@@ -67,15 +67,15 @@ public class ExperienceController {
                                 ) throws IOException{
         Experience exp = ExpServ.buscarExperience(id);
         try{       
-        exp.setPosition(position);
-        exp.setCompany(company);
-        exp.setMode(mode);
-        exp.setDateStart(dateStart);
-        exp.setDateEnd(dateEnd);
-        exp.setTimeElapsed(timeElapsed);
-        
-        exp.setNameImagen(imagen.getOriginalFilename());
-        exp.setImagen(imagen.getBytes());      
+            exp.setPosition(position);
+            exp.setCompany(company);
+            exp.setMode(mode);
+            exp.setDateStart(dateStart);
+            exp.setDateEnd(dateEnd);
+            exp.setTimeElapsed(timeElapsed);
+
+            exp.setNameImagen(imagen.getOriginalFilename());
+            exp.setImagen(imagen.getBytes());      
         }
         catch(NullPointerException e){
             exp.setPosition(position);
